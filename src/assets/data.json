@@ -1,0 +1,245 @@
+{
+  "stores": [
+    {
+      "id": 1,
+      "name": "ShabelSuq",
+      "products": [
+        {
+          "base_product_id": 4,
+          "title": "Samsung Galaxy S24 Ultra",
+          "category": "Smartphone",
+          "price": 1199.99,
+          "rating": 4.8,
+          "deliveryDays": 2,
+          "availability": "In Stock",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/3/1.jpg",
+            "https://cdn.dummyjson.com/product-images/3/2.jpg",
+            "https://cdn.dummyjson.com/product-images/3/3.jpg"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+          "reviews": [
+            {
+              "user": "Hana",
+              "comment": "Amazing phone with great camera!",
+              "rating": 5
+            },
+            {
+              "user": "Miki",
+              "comment": "Battery lasts long, worth the price.",
+              "rating": 4
+            }
+          ]
+        },
+        {
+          "base_product_id": 7,
+          "title": "Apple MacBook Pro 16-inch M3",
+          "category": "Laptop",
+          "price": 2499.99,
+          "rating": 4.7,
+          "deliveryDays": 1,
+          "availability": "In Stock",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/6/1.png",
+            "https://cdn.dummyjson.com/product-images/6/2.png"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.png",
+          "reviews": [
+            {
+              "user": "Liya",
+              "comment": "Powerful performance for coding.",
+              "rating": 5
+            },
+            {
+              "user": "Robel",
+              "comment": "Expensive but premium quality.",
+              "rating": 4
+            }
+          ]
+        },
+        {
+          "base_product_id": 12,
+          "title": "Dell XPS 13 Plus",
+          "category": "Laptop",
+          "price": 1499.99,
+          "rating": 4.5,
+          "deliveryDays": 5,
+          "availability": "In Stock",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/10/1.jpg",
+            "https://cdn.dummyjson.com/product-images/10/2.jpg"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/product-images/10/thumbnail.jpg",
+          "reviews": [
+            { "user": "Sami", "comment": "Compact and fast.", "rating": 5 },
+            {
+              "user": "Eden",
+              "comment": "A bit pricey but stylish.",
+              "rating": 4
+            }
+          ]
+        },
+        {
+          "base_product_id": 17,
+          "title": "Sony WH-1000XM5 Headphones",
+          "category": "Headphones",
+          "price": 399.99,
+          "rating": 4.6,
+          "deliveryDays": 2,
+          "availability": "In Stock",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/11/1.jpg",
+            "https://cdn.dummyjson.com/product-images/11/2.jpg"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/product-images/11/thumbnail.jpg",
+          "reviews": [
+            {
+              "user": "Dagi",
+              "comment": "Best noise cancellation!",
+              "rating": 5
+            },
+            {
+              "user": "Kiya",
+              "comment": "Very comfortable for long use.",
+              "rating": 4
+            }
+          ]
+        },
+        {
+          "base_product_id": 22,
+          "title": "Apple Watch Series 10",
+          "category": "Smartwatch",
+          "price": 499.99,
+          "rating": 4.9,
+          "deliveryDays": 2,
+          "availability": "In Stock",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.jpg"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "reviews": [
+            { "user": "Betty", "comment": "Love the new design!", "rating": 5 },
+            {
+              "user": "Abel",
+              "comment": "Fitness tracking is superb.",
+              "rating": 5
+            }
+          ]
+        },
+        {
+          "base_product_id": 25,
+          "title": "HP Pavilion Gaming PC",
+          "category": "Desktop PC",
+          "price": 1299.99,
+          "rating": 4.4,
+          "deliveryDays": 3,
+          "availability": "In Stock",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/7/1.jpg",
+            "https://cdn.dummyjson.com/product-images/7/2.jpg"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+          "reviews": [
+            {
+              "user": "Natnael",
+              "comment": "Runs games smoothly.",
+              "rating": 4
+            },
+            { "user": "Selam", "comment": "Nice cooling system.", "rating": 5 }
+          ]
+        },
+        {
+          "base_product_id": 29,
+          "title": "Lenovo Tab P12 Pro",
+          "category": "Tablet",
+          "price": 799.99,
+          "rating": 4.5,
+          "deliveryDays": 2,
+          "availability": "In Stock",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/18/1.jpg",
+            "https://cdn.dummyjson.com/product-images/18/2.jpg"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/product-images/18/thumbnail.jpg",
+          "reviews": [
+            { "user": "Ruth", "comment": "Display is gorgeous!", "rating": 5 },
+            { "user": "Dawit", "comment": "Fast and lightweight.", "rating": 4 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "BonaSuq",
+      "products": [
+        {
+          "base_product_id": 4,
+          "title": "Samsung Galaxy S24 Plus",
+          "category": "Smartphone",
+          "price": 1149.49,
+          "rating": 4.5,
+          "deliveryDays": 7,
+          "availability": "In Stock",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/3/1.jpg",
+            "https://cdn.dummyjson.com/product-images/3/2.jpg"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+          "reviews": [
+            {
+              "user": "Hana",
+              "comment": "Great value for money.",
+              "rating": 4
+            },
+            {
+              "user": "Miki",
+              "comment": "Good performance but slow charger.",
+              "rating": 4
+            }
+          ]
+        },
+        {
+          "base_product_id": 7,
+          "title": "Apple MacBook Air M3",
+          "category": "Laptop",
+          "price": 1299.99,
+          "rating": 4.3,
+          "deliveryDays": 3,
+          "availability": "In Stock",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/6/1.png",
+            "https://cdn.dummyjson.com/product-images/6/2.png"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.png",
+          "reviews": [
+            { "user": "Liya", "comment": "Slim and fast.", "rating": 5 },
+            {
+              "user": "Robel",
+              "comment": "Battery life could be better.",
+              "rating": 4
+            }
+          ]
+        },
+        {
+          "base_product_id": 12,
+          "title": "Dell Inspiron 15",
+          "category": "Laptop",
+          "price": 1429.99,
+          "rating": 4.0,
+          "deliveryDays": 10,
+          "availability": "In Stock",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/10/1.jpg",
+            "https://cdn.dummyjson.com/product-images/10/2.jpg"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/product-images/10/thumbnail.jpg",
+          "reviews": [
+            { "user": "Sami", "comment": "Reliable for work.", "rating": 4 },
+            { "user": "Eden", "comment": "Could be faster.", "rating": 3 }
+          ]
+        }
+      ]
+    }
+  ]
+}
