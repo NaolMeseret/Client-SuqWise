@@ -5,18 +5,61 @@ const Header = () => {
   const location = useLocation()
 
   return (
-    <header className="header">
-      <div className="header-container">
-        <Link to="/" className="logo">
-          🛍️ SuqWise-Ecommerce
-        </Link>
+    <header className="amazon-header">
+      {/* Top Header */}
+      <div className="header-top">
+        <div className="header-top-left">
+          <Link to="/" className="logo">
+            🛍️ SuqWise
+          </Link>
+          <div className="delivery-location">
+            <span className="delivery-to">Deliver to</span>
+            <span className="location">📍 Ethiopia</span>
+          </div>
+        </div>
 
-        <nav className="nav">
+        {/* Search Bar */}
+        <div className="search-container">
+          <div className="search-select">
+            <select>
+              <option>All</option>
+              <option>Products</option>
+              <option>Stores</option>
+            </select>
+          </div>
+          <input
+            type="text"
+            placeholder="Search SuqWise"
+            className="search-input"
+          />
+          <button className="search-btn">🔍</button>
+        </div>
+
+        <div className="header-top-right">
+          <div className="header-account">
+            <span className="account-label">EN</span>
+            <span className="account-text">Account & Lists</span>
+          </div>
+          <div className="header-returns">
+            <span className="returns-label">Returns</span>
+            <span className="returns-text">& Orders</span>
+          </div>
+          <div className="header-cart">
+            <span className="cart-icon">🛒</span>
+            <span className="cart-count">3</span>
+            <span className="cart-text">Cart</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation Bar */}
+      <nav className="header-nav">
+        <div className="nav-left">
           <Link
             to="/"
             className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
           >
-            Home
+            All
           </Link>
           <Link
             to="/products"
@@ -24,25 +67,25 @@ const Header = () => {
               location.pathname === "/products" ? "active" : ""
             }`}
           >
-            All Products
+            Today's Deals
           </Link>
-          <Link
-            to="/stores"
-            className={`nav-link ${
-              location.pathname === "/stores" ? "active" : ""
-            }`}
-          >
-            Stores
+          <Link to="/stores" className="nav-link">
+            Registry
           </Link>
-        </nav>
-
-        <div className="header-actions">
-          <button className="cart-btn" title="Shopping Cart">
-            <span className="cart-count">3</span>
-          </button>
-          <button className="btn btn-secondary">👤 Login</button>
+          <Link to="/prime" className="nav-link">
+            Prime Video
+          </Link>
+          <Link to="/gift-cards" className="nav-link">
+            Gift Cards
+          </Link>
+          <Link to="/customer-service" className="nav-link">
+            Customer Service
+          </Link>
+          <Link to="/sell" className="nav-link">
+            Sell
+          </Link>
         </div>
-      </div>
+      </nav>
     </header>
   )
 }
