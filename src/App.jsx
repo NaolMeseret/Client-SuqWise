@@ -1,5 +1,5 @@
 import React from "react"
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useLocation } from "react-router-dom"
 import Header from "./components/layout/Header"
 import Footer from "./components/layout/Footer"
 import Hero from "./components/layout/Hero"
@@ -8,14 +8,22 @@ import ProductsPage from "./pages/ProductsPage"
 import StoreDetailPage from "./pages/StoreDetailPage"
 import LoginPage from "./pages/LoginPage"
 import RegisterPage from "./pages/RegisterPage"
-
+import ProductDetailPage from "./components/product/ProductDetailPage"
 import "./styles/main.css"
 
 function App() {
+  const location = useLocation()
+
+  // Hide Hero on product detail pages
+  const showHero = !(
+    location.pathname.startsWith("/product/") ||
+    location.pathname.startsWith("/account")
+  )
+
   return (
     <div className="app">
       <Header />
-      <Hero />
+      {showHero && <Hero />}
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -26,6 +34,7 @@ function App() {
           <Route path="/stores" element={<HomePage />} />
           <Route path="/men" element={<ProductsPage category="men" />} />
           <Route path="/women" element={<ProductsPage category="women" />} />
+          <Route path="/product/:productId" element={<ProductDetailPage />} />
           <Route
             path="/electronics"
             element={<ProductsPage category="electronics" />}
