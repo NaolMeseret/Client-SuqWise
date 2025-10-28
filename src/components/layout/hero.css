@@ -1,0 +1,153 @@
+/* ===== FASHION HERO STYLES ===== */
+.fashion-hero {
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--primary-light) 100%
+  );
+  color: var(--text-light);
+  padding: 80px 0;
+  margin-top: 0;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero-text {
+  padding-right: 20px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-light);
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  color: rgba(236, 240, 241, 0.9);
+  font-weight: 300;
+}
+
+.shop-now-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--text-light);
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  border: 2px solid var(--accent);
+}
+
+.shop-now-btn:hover {
+  background: transparent;
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .fashion-hero {
+    padding: 60px 0;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-text {
+    padding-right: 0;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .image-placeholder {
+    height: 300px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .fashion-hero {
+    padding: 40px 0;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .shop-now-btn {
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
+
+  .image-placeholder {
+    height: 250px;
+    font-size: 1rem;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 1200px) {
+  .hero-content {
+    max-width: 1100px;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+  }
+}
