@@ -26,7 +26,7 @@ const Hero = () => {
       buttonLink: "/shop-women",
       bgColor: "linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%)",
       image:
-        "https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+        "https://media.istockphoto.com/id/534203250/photo/women-carrying-shoppings-bags-and-using-smartphone.jpg?s=1024x1024&w=is&k=20&c=ICWlWvqm85nsAf6TFhKm2ugT9OHt__oTO5GCU3eUamc=",
       alt: "Women's Fashion Collection",
     },
     {
