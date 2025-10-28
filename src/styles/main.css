@@ -1197,7 +1197,7 @@ body {
 /* Large Desktops (1400px+) */
 @media (min-width: 1400px) {
   .container {
-    max-width: 1320px;
+    max-width: 1780px;
   }
 }
 
