@@ -6,6 +6,9 @@ import Hero from "./components/layout/Hero"
 import HomePage from "./pages/HomePage"
 import ProductsPage from "./pages/ProductsPage"
 import StoreDetailPage from "./pages/StoreDetailPage"
+import LoginPage from "./pages/LoginPage"
+import RegisterPage from "./pages/RegisterPage"
+
 import "./styles/main.css"
 
 function App() {
@@ -16,6 +19,8 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/store/:storeId" element={<StoreDetailPage />} />
           <Route path="/stores" element={<HomePage />} />
@@ -31,6 +36,13 @@ function App() {
             element={<ProductsPage category="women" />}
           />
           <Route path="/sale" element={<ProductsPage category="sale" />} />
+          <Route
+            path="/wishlist"
+            element={<ProductsPage category="wishlist" />}
+          />
+          <Route path="/cart" element={<ProductsPage category="cart" />} />
+          <Route path="/about" element={<HomePage />} />
+          <Route path="/contact" element={<HomePage />} />
         </Routes>
       </main>
       <Footer />

@@ -1,0 +1,118 @@
+/* ===== AUTH PAGES STYLES ===== */
+.auth-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px 20px;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 524px;
+}
+
+.auth-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.auth-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.form-input {
+  padding: 12px 16px;
+  border: 2px solid var(--border-light);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+}
+
+.auth-submit-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.auth-submit-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.auth-links {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+}
+
+.auth-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 30px 20px;
+  }
+
+  .auth-title {
+    font-size: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

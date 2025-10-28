@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-
+import "../../styles/hero.css"
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
 
@@ -13,7 +13,9 @@ const Hero = () => {
       buttonText: "SHOP NOW",
       buttonLink: "/shop-men",
       bgColor: "linear-gradient(135deg, #2c3e50 0%, #34495e 100%)",
-      image: "👔",
+      image:
+        "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      alt: "Men's Fashion Collection",
     },
     {
       id: 2,
@@ -23,7 +25,9 @@ const Hero = () => {
       buttonText: "EXPLORE COLLECTION",
       buttonLink: "/shop-women",
       bgColor: "linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%)",
-      image: "👗",
+      image:
+        "https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      alt: "Women's Fashion Collection",
     },
     {
       id: 3,
@@ -33,7 +37,9 @@ const Hero = () => {
       buttonText: "VIEW DEALS",
       buttonLink: "/electronics",
       bgColor: "linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)",
-      image: "📱",
+      image:
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      alt: "Smartphones and Electronics",
     },
     {
       id: 4,
@@ -43,7 +49,33 @@ const Hero = () => {
       buttonText: "SHOP SALE",
       buttonLink: "/sale",
       bgColor: "linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)",
-      image: "🔥",
+      image:
+        "https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      alt: "Summer Sale Products",
+    },
+    {
+      id: 5,
+      title: "SMART PHONES",
+      description:
+        "Experience the future in your hands with our latest smartphone collection. Cutting-edge technology, stunning displays, and powerful performance.",
+      buttonText: "BUY NOW",
+      buttonLink: "/smartphones",
+      bgColor: "linear-gradient(135deg, #3498db 0%, #2980b9 100%)",
+      image:
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      alt: "Latest Smartphones",
+    },
+    {
+      id: 6,
+      title: "LAPTOP & COMPUTERS",
+      description:
+        "Powerful laptops and computers for work, gaming, and creativity. Find the perfect device to match your needs and budget.",
+      buttonText: "EXPLORE",
+      buttonLink: "/laptops",
+      bgColor: "linear-gradient(135deg, #f39c12 0%, #e67e22 100%)",
+      image:
+        "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      alt: "Laptops and Computers",
     },
   ]
 
@@ -89,9 +121,14 @@ const Hero = () => {
                   </Link>
                 </div>
                 <div className="slide-image">
-                  <div className="image-placeholder">
-                    <span className="image-icon">{slide.image}</span>
-                    <span className="image-text">Featured Product</span>
+                  <div className="image-container">
+                    <img
+                      src={slide.image}
+                      alt={slide.alt}
+                      className="slide-img"
+                      loading="lazy"
+                    />
+                    <div className="image-overlay"></div>
                   </div>
                 </div>
               </div>
@@ -104,12 +141,14 @@ const Hero = () => {
       <button
         className="carousel-arrow carousel-arrow-prev"
         onClick={prevSlide}
+        aria-label="Previous slide"
       >
         ‹
       </button>
       <button
         className="carousel-arrow carousel-arrow-next"
         onClick={nextSlide}
+        aria-label="Next slide"
       >
         ›
       </button>
@@ -121,6 +160,7 @@ const Hero = () => {
             key={index}
             className={`indicator ${index === currentSlide ? "active" : ""}`}
             onClick={() => goToSlide(index)}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>

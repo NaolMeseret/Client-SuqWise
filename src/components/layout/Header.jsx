@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, useLocation } from "react-router-dom"
-import "../layout/header.css"
-
+import "../../styles/header.css"
 const Header = () => {
   const location = useLocation()
 
@@ -12,12 +11,16 @@ const Header = () => {
         <div className="container">
           <div className="top-bar-content">
             <div className="brand">
-              <span className="brand-name">SuqWise Shop</span>
+              <span className="brand-name">E-Com Shop</span>
               <span className="brand-tagline">Sleeping Mode Easy</span>
             </div>
             <div className="top-bar-actions">
-              <button className="auth-btn">Login</button>
-              <button className="auth-btn">Register</button>
+              <Link to="/login" className="auth-btn">
+                Login
+              </Link>
+              <Link to="/register" className="auth-btn">
+                Register
+              </Link>
             </div>
           </div>
         </div>
@@ -73,15 +76,15 @@ const Header = () => {
 
             {/* Cart & Actions */}
             <div className="nav-actions">
-              <button className="nav-action-btn">
+              <Link to="/wishlist" className="nav-action-btn">
                 <span className="action-icon">❤️</span>
                 <span className="action-text">Wishlist</span>
-              </button>
-              <button className="nav-action-btn">
+              </Link>
+              <Link to="/cart" className="nav-action-btn">
                 <span className="action-icon">🛒</span>
                 <span className="action-text">Cart</span>
                 <span className="cart-count">0</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
