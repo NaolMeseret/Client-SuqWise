@@ -6,11 +6,13 @@ import HomePage from "./pages/HomePage"
 import ProductsPage from "./pages/ProductsPage"
 import StoreDetailPage from "./pages/StoreDetailPage"
 import "./styles/main.css"
+import Hero from "./components/layout/Hero"
 
 function App() {
   return (
     <div className="app">
       <Header />
+      <Hero />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
