@@ -4,8 +4,6 @@ import data from "../assets/data.json"
 import StoreSection from "../components/product/StoreSection"
 
 const HomePage = () => {
-  const allProducts = data.stores.flatMap((store) => store.products)
-
   // Amazon-style category sections
 
   return (
