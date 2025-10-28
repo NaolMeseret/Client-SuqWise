@@ -291,21 +291,6 @@ body {
   flex-wrap: wrap;
 }
 
-.nav-link {
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  padding: 6px 8px;
-  border-radius: var(--radius-sm);
-  border: 1px solid transparent;
-  transition: var(--transition-fast);
-}
-
-.nav-link:hover,
-.nav-link.active {
-  border-color: white;
-}
-
 /* ===== AMAZON-STYLE HERO SECTION ===== */
 .amazon-hero {
   background: var(--gradient-hero);
@@ -1590,13 +1575,13 @@ body {
     transform: none;
   }
 
-  /* Add tap highlights */
+  /* Add tap highlights
   .btn,
   .nav-link,
   .amazon-product-card,
   .category-card {
     -webkit-tap-highlight-color: transparent;
-  }
+  } */
 }
 
 /* ===== DARK MODE SUPPORT ===== */
