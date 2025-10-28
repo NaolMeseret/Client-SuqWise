@@ -352,7 +352,7 @@
 /* Extra Large Screens */
 @media (min-width: 1400px) {
   .hero-carousel {
-    height: 450px;
+    height: 700px;
   }
 
   .slide-content {
