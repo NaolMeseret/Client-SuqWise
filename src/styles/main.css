@@ -587,9 +587,10 @@ body {
 
 .product-actions {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   gap: var(--space-xs);
   margin-top: auto;
+  justify-content: space-between;
 }
 
 .btn-add-to-cart {
