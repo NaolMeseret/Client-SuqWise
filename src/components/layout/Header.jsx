@@ -1,10 +1,109 @@
-import React, { useState } from "react"
-import { Link, useLocation } from "react-router-dom"
+import React, { useState, useEffect, useRef } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import data from "../../assets/data.json"
 import "../../styles/header.css"
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [searchResults, setSearchResults] = useState([])
+  const [showResults, setShowResults] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
+  const searchRef = useRef(null)
+  const inputRef = useRef(null)
+
+  // Close search results when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setShowResults(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
+
+  // Search functionality
+  const handleSearch = (query) => {
+    setSearchQuery(query)
+
+    if (query.trim().length < 2) {
+      setSearchResults([])
+      setShowResults(false)
+      return
+    }
+
+    setIsLoading(true)
+
+    // Simulate API delay for better UX
+    setTimeout(() => {
+      const results = performSearch(query.trim().toLowerCase())
+      setSearchResults(results)
+      setShowResults(true)
+      setIsLoading(false)
+    }, 300)
+  }
+
+  const performSearch = (query) => {
+    const allProducts = data.stores.flatMap((store) =>
+      store.products.map((product) => ({
+        ...product,
+        storeName: store.name,
+        storeId: store.id,
+      }))
+    )
+
+    return allProducts.filter((product) => {
+      const searchableText = `
+        ${product.title.toLowerCase()}
+        ${product.category.toLowerCase()}
+        ${product.storeName.toLowerCase()}
+        ${product.brand?.toLowerCase() || ""}
+      `
+
+      return searchableText.includes(query)
+    })
+  }
+
+  const handleProductClick = (product) => {
+    navigate(`/product/${product.base_product_id}`)
+    setShowResults(false)
+    setSearchQuery("")
+    setSearchResults([])
+  }
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault()
+    if (searchQuery.trim() && searchResults.length > 0) {
+      handleProductClick(searchResults[0])
+    } else if (searchQuery.trim()) {
+      // Navigate to search results page or show no results
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`)
+      setShowResults(false)
+    }
+  }
+
+  const highlightMatch = (text, query) => {
+    if (!query) return text
+
+    const regex = new RegExp(`(${query})`, "gi")
+    const parts = text.split(regex)
+
+    return parts.map((part, index) =>
+      regex.test(part) ? (
+        <span key={index} className="highlight">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    )
+  }
 
   return (
     <header className="modern-header">
@@ -46,27 +145,147 @@ const Header = () => {
             </Link>
 
             {/* Search Bar */}
-            <div className="search-section">
-              <div className="search-container">
+            <div className="search-section" ref={searchRef}>
+              <form className="search-container" onSubmit={handleSearchSubmit}>
                 <input
+                  ref={inputRef}
                   type="text"
-                  placeholder="Search for products..."
+                  placeholder="Search for products, brands, categories..."
                   className="search-input"
+                  value={searchQuery}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  onFocus={() =>
+                    searchQuery.length >= 2 && setShowResults(true)
+                  }
                 />
-                <button className="search-btn">
-                  <span className="search-icon">
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                    </svg>
-                  </span>
-                  Search
+                <button type="submit" className="search-btn">
+                  {isLoading ? (
+                    <div className="search-loading"></div>
+                  ) : (
+                    <>
+                      <span className="search-icon">
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                        </svg>
+                      </span>
+                      Search
+                    </>
+                  )}
                 </button>
-              </div>
+
+                {/* Search Results Dropdown */}
+                {showResults && (
+                  <div className="search-results">
+                    <div className="search-results-header">
+                      <span className="results-count">
+                        {searchResults.length} results found
+                      </span>
+                      <button
+                        type="button"
+                        className="close-results"
+                        onClick={() => setShowResults(false)}
+                      >
+                        ×
+                      </button>
+                    </div>
+
+                    <div className="search-results-list">
+                      {searchResults.length > 0 ? (
+                        searchResults.slice(0, 8).map((product) => (
+                          <div
+                            key={`${product.base_product_id}-${product.storeId}`}
+                            className="search-result-item"
+                            onClick={() => handleProductClick(product)}
+                          >
+                            <div className="result-image">
+                              <img
+                                src={product.thumbnail}
+                                alt={product.title}
+                                loading="lazy"
+                              />
+                            </div>
+                            <div className="result-info">
+                              <div className="result-title">
+                                {highlightMatch(product.title, searchQuery)}
+                              </div>
+                              <div className="result-category">
+                                in{" "}
+                                {highlightMatch(product.category, searchQuery)}
+                              </div>
+                              <div className="result-store">
+                                from{" "}
+                                {highlightMatch(product.storeName, searchQuery)}
+                              </div>
+                              <div className="result-price">
+                                ${product.price}
+                              </div>
+                            </div>
+                            <div className="result-rating">
+                              <span className="rating-stars">
+                                {[...Array(5)].map((_, index) => (
+                                  <span
+                                    key={index}
+                                    className={`star ${
+                                      index < Math.floor(product.rating)
+                                        ? "full"
+                                        : index ===
+                                            Math.floor(product.rating) &&
+                                          product.rating % 1 >= 0.5
+                                        ? "half"
+                                        : "empty"
+                                    }`}
+                                  >
+                                    {index < Math.floor(product.rating)
+                                      ? "★"
+                                      : index === Math.floor(product.rating) &&
+                                        product.rating % 1 >= 0.5
+                                      ? "★"
+                                      : "☆"}
+                                  </span>
+                                ))}
+                              </span>
+                              <span className="rating-value">
+                                {product.rating}
+                              </span>
+                            </div>
+                          </div>
+                        ))
+                      ) : searchQuery.length >= 2 ? (
+                        <div className="no-results">
+                          <div className="no-results-icon">🔍</div>
+                          <div className="no-results-text">
+                            <p>No products found for "{searchQuery}"</p>
+                            <small>
+                              Try different keywords or check spelling
+                            </small>
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+
+                    {searchResults.length > 8 && (
+                      <div className="search-results-footer">
+                        <button
+                          className="view-all-results"
+                          onClick={() => {
+                            navigate(
+                              `/search?q=${encodeURIComponent(searchQuery)}`
+                            )
+                            setShowResults(false)
+                          }}
+                        >
+                          View all {searchResults.length} results
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </form>
             </div>
 
             {/* Header Actions */}
