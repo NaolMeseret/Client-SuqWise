@@ -15,14 +15,6 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
-      {/* Hero Section */}
-      {/* <section className="hero-section">
-        <div className="container">
-          <h1>Welcome to Our Store</h1>
-          <p>Discover amazing products at great prices</p>
-        </div>
-      </section> */}
-
       {/* Featured Products */}
       <section className="featured-products">
         <div className="container">
