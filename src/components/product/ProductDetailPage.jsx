@@ -201,9 +201,9 @@ const ProductDetailPage = () => {
             <div className="overall-rating">
               <div className="rating-score">{product.rating}</div>
               <Rating rating={product.rating} showValue={false} size="large" />
-              <div className="review-count">
+              {/* <div className="review-count">
                 {product.reviews?.length || 0} global ratings
-              </div>
+              </div> */}
             </div>
           </div>
 

@@ -1,6 +1,6 @@
 import React from "react"
 
-const Rating = ({ rating, showValue = true, size = "medium", reviewCount }) => {
+const Rating = ({ rating, showValue = true, size = "medium" }) => {
   const fullStars = Math.floor(rating)
   const hasHalfStar = rating % 1 >= 0.5
 
@@ -29,7 +29,6 @@ const Rating = ({ rating, showValue = true, size = "medium", reviewCount }) => {
       {showValue && (
         <div className="rating-info">
           <span className="rating-value">{rating}</span>
-          {reviewCount && <span className="review-count">({reviewCount})</span>}
         </div>
       )}
     </div>
