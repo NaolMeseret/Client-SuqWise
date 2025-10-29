@@ -24,17 +24,17 @@ const StoreDetailPage = () => {
     )
   }
 
-  const avgRating =
-    store.products.reduce((acc, product) => acc + product.rating, 0) /
-    store.products.length
-  const minDelivery = Math.min(...store.products.map((p) => p.deliveryDays))
+  // const avgRating =
+  //   store.products.reduce((acc, product) => acc + product.rating, 0) /
+  //   store.products.length
+  // const minDelivery = Math.min(...store.products.map((p) => p.deliveryDays))
   const categories = [...new Set(store.products.map((p) => p.category))]
 
   return (
     <div className="amazon-store-detail">
       <div className="container">
         {/* Store Header */}
-        <div className="store-hero">
+        {/* <div className="store-hero">
           <div className="store-info">
             <h1 className="store-title">🏪 {store.name}</h1>
             <p className="store-description">
@@ -61,7 +61,7 @@ const StoreDetailPage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Store Categories */}
         <div className="store-categories">
