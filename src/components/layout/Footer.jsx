@@ -95,9 +95,8 @@ const Footer = () => {
               <span className="logo-text">SuqWise</span>
             </div>
             <p className="footer-description">
-              Your trusted online marketplace for quality products from verified
-              stores. Shop with confidence with our verified sellers and fast
-              delivery.
+              AI-powered marketplace helping you find the best products from
+              verified stores with quality assurance and fast delivery.
             </p>
             <div className="social-media">
               <h4>Follow Us</h4>
