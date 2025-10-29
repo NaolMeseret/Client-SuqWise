@@ -27,7 +27,18 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div className="product-info">
-        <div className="product-price">${product.price}</div>
+        <div className="price-AIBUTTON">
+          <div className="product-price">${product.price}</div>
+          <button
+            class="ai-button"
+            onClick={(e) => {
+              e.preventDefault()
+              alert("🤖 SuqWise AI is analyzing your selected products...")
+            }}
+          >
+            Compare
+          </button>
+        </div>
         <div className="product-title-tooltip">{product.title}</div>
       </div>
     </div>
