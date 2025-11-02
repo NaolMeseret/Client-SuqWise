@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import data from "../../assets/data.json"
-import "../../styles/search-results.css"
+import data from "../assets/data.json"
+import "./SearchResults.css"
 
 const SearchResults = () => {
   const [searchResults, setSearchResults] = useState([])
