@@ -11,6 +11,9 @@ import RegisterPage from "./pages/RegisterPage"
 import ProductDetailPage from "./components/product/ProductDetailPage"
 import "./styles/main.css"
 
+import SearchResults from "./components/SearchResults"
+
+// In your routes
 function App() {
   const location = useLocation()
 
@@ -35,6 +38,7 @@ function App() {
           <Route path="/men" element={<ProductsPage category="men" />} />
           <Route path="/women" element={<ProductsPage category="women" />} />
           <Route path="/product/:productId" element={<ProductDetailPage />} />
+          <Route path="/search" element={<SearchResults />} />
           <Route
             path="/electronics"
             element={<ProductsPage category="electronics" />}

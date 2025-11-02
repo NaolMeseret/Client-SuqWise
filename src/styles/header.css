@@ -715,3 +715,135 @@
     max-width: 700px;
   }
 }
+
+/* Search Results Compare Styles */
+.search-results-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.compare-selected-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.compare-selected-btn:hover {
+  background: #0056b3;
+}
+
+.result-compare {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+}
+
+.compare-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: #666;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.compare-checkbox:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.compare-checkbox input {
+  display: none;
+}
+
+.compare-checkbox .checkmark {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.compare-checkbox input:checked + .checkmark {
+  background: #007bff;
+  border-color: #007bff;
+}
+
+.compare-checkbox input:checked + .checkmark::after {
+  content: "✓";
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* Search result item positioning */
+.search-result-item {
+  position: relative;
+  padding-right: 80px; /* Space for compare checkbox */
+}
+
+/* Highlight matches */
+.highlight {
+  background: #fff3cd;
+  padding: 0 2px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+/* Loading animation */
+.search-loading {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .search-results-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+  }
+
+  .compare-selected-btn {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .result-compare {
+    top: 0.25rem;
+    right: 0.25rem;
+  }
+
+  .compare-checkbox {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+}

@@ -9,6 +9,7 @@ const Header = () => {
   const [searchResults, setSearchResults] = useState([])
   const [showResults, setShowResults] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [compareProducts, setCompareProducts] = useState([])
   const location = useLocation()
   const navigate = useNavigate()
   const searchRef = useRef(null)
@@ -79,12 +80,36 @@ const Header = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault()
-    if (searchQuery.trim() && searchResults.length > 0) {
-      handleProductClick(searchResults[0])
-    } else if (searchQuery.trim()) {
-      // Navigate to search results page or show no results
+    if (searchQuery.trim()) {
+      // Navigate to search results page with all results
       navigate(`/search?q=${encodeURIComponent(searchQuery)}`)
       setShowResults(false)
+      setSearchQuery("")
+      setSearchResults([])
+    }
+  }
+
+  const handleCompareChange = (product, e) => {
+    e.stopPropagation()
+    const productKey = `${product.base_product_id}-${product.storeId}`
+
+    setCompareProducts((prev) => {
+      if (prev.includes(productKey)) {
+        return prev.filter((id) => id !== productKey)
+      } else {
+        return [...prev, productKey]
+      }
+    })
+  }
+
+  const handleCompareSelected = (e) => {
+    e.stopPropagation()
+    if (compareProducts.length > 0) {
+      navigate(`/compare?products=${compareProducts.join(",")}`)
+      setShowResults(false)
+      setSearchQuery("")
+      setSearchResults([])
+      setCompareProducts([])
     }
   }
 
@@ -157,6 +182,11 @@ const Header = () => {
                   onFocus={() =>
                     searchQuery.length >= 2 && setShowResults(true)
                   }
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleSearchSubmit(e)
+                    }
+                  }}
                 />
                 <button type="submit" className="search-btn">
                   {isLoading ? (
@@ -185,76 +215,113 @@ const Header = () => {
                       <span className="results-count">
                         {searchResults.length} results found
                       </span>
-                      <button
-                        type="button"
-                        className="close-results"
-                        onClick={() => setShowResults(false)}
-                      >
-                        ×
-                      </button>
+                      <div className="search-results-actions">
+                        {compareProducts.length > 0 && (
+                          <button
+                            type="button"
+                            className="compare-selected-btn"
+                            onClick={handleCompareSelected}
+                          >
+                            Compare ({compareProducts.length})
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          className="close-results"
+                          onClick={() => setShowResults(false)}
+                        >
+                          ×
+                        </button>
+                      </div>
                     </div>
 
                     <div className="search-results-list">
                       {searchResults.length > 0 ? (
-                        searchResults.slice(0, 8).map((product) => (
-                          <div
-                            key={`${product.base_product_id}-${product.storeId}`}
-                            className="search-result-item"
-                            onClick={() => handleProductClick(product)}
-                          >
-                            <div className="result-image">
-                              <img
-                                src={product.thumbnail}
-                                alt={product.title}
-                                loading="lazy"
-                              />
-                            </div>
-                            <div className="result-info">
-                              <div className="result-title">
-                                {highlightMatch(product.title, searchQuery)}
+                        searchResults.slice(0, 8).map((product) => {
+                          const productKey = `${product.base_product_id}-${product.storeId}`
+                          const isCompared =
+                            compareProducts.includes(productKey)
+
+                          return (
+                            <div
+                              key={productKey}
+                              className="search-result-item"
+                              onClick={() => handleProductClick(product)}
+                            >
+                              <div className="result-compare">
+                                <label className="compare-checkbox">
+                                  <input
+                                    type="checkbox"
+                                    checked={isCompared}
+                                    onChange={(e) =>
+                                      handleCompareChange(product, e)
+                                    }
+                                  />
+                                  <span className="checkmark"></span>
+                                  Compare
+                                </label>
                               </div>
-                              <div className="result-category">
-                                in{" "}
-                                {highlightMatch(product.category, searchQuery)}
+                              <div className="result-image">
+                                <img
+                                  src={product.thumbnail}
+                                  alt={product.title}
+                                  loading="lazy"
+                                />
                               </div>
-                              <div className="result-store">
-                                from{" "}
-                                {highlightMatch(product.storeName, searchQuery)}
+                              <div className="result-info">
+                                <div className="result-title">
+                                  {highlightMatch(product.title, searchQuery)}
+                                </div>
+                                <div className="result-category">
+                                  in{" "}
+                                  {highlightMatch(
+                                    product.category,
+                                    searchQuery
+                                  )}
+                                </div>
+                                <div className="result-store">
+                                  from{" "}
+                                  {highlightMatch(
+                                    product.storeName,
+                                    searchQuery
+                                  )}
+                                </div>
+                                <div className="result-price">
+                                  ${product.price}
+                                </div>
                               </div>
-                              <div className="result-price">
-                                ${product.price}
-                              </div>
-                            </div>
-                            <div className="result-rating">
-                              <span className="rating-stars">
-                                {[...Array(5)].map((_, index) => (
-                                  <span
-                                    key={index}
-                                    className={`star ${
-                                      index < Math.floor(product.rating)
-                                        ? "full"
+                              <div className="result-rating">
+                                <span className="rating-stars">
+                                  {[...Array(5)].map((_, index) => (
+                                    <span
+                                      key={index}
+                                      className={`star ${
+                                        index < Math.floor(product.rating)
+                                          ? "full"
+                                          : index ===
+                                              Math.floor(product.rating) &&
+                                            product.rating % 1 >= 0.5
+                                          ? "half"
+                                          : "empty"
+                                      }`}
+                                    >
+                                      {index < Math.floor(product.rating)
+                                        ? "★"
                                         : index ===
                                             Math.floor(product.rating) &&
                                           product.rating % 1 >= 0.5
-                                        ? "half"
-                                        : "empty"
-                                    }`}
-                                  >
-                                    {index < Math.floor(product.rating)
-                                      ? "★"
-                                      : index === Math.floor(product.rating) &&
-                                        product.rating % 1 >= 0.5
-                                      ? "★"
-                                      : "☆"}
-                                  </span>
-                                ))}
-                              </span>
-                              <span className="rating-value">
-                                {product.rating}
-                              </span>
+                                        ? "★"
+                                        : "☆"}
+                                    </span>
+                                  ))}
+                                </span>
+                                <span className="rating-value">
+                                  {product.rating}
+                                </span>
+                              </div>
                             </div>
-                          </div>
-                        ))
+                          )
+                        })
                       ) : searchQuery.length >= 2 ? (
                         <div className="no-results">
                           <div className="no-results-icon">🔍</div>
@@ -277,6 +344,8 @@ const Header = () => {
                               `/search?q=${encodeURIComponent(searchQuery)}`
                             )
                             setShowResults(false)
+                            setSearchQuery("")
+                            setSearchResults([])
                           }}
                         >
                           View all {searchResults.length} results

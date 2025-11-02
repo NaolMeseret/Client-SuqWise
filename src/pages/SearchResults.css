@@ -1,0 +1,270 @@
+.search-results-page {
+  padding: 2rem 0;
+  min-height: 60vh;
+}
+
+.search-results-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.search-results-header h1 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 2rem;
+}
+
+.search-query {
+  color: #666;
+  font-size: 1.2rem;
+  margin: 0 0 1rem 0;
+}
+
+.results-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.results-count {
+  color: #666;
+  font-weight: 500;
+}
+
+.compare-selected-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.compare-selected-btn:hover {
+  background: #0056b3;
+}
+
+.search-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.compare-checkbox {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.checkbox-label input {
+  display: none;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ddd;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.checkbox-label input:checked + .checkmark {
+  background: #007bff;
+  border-color: #007bff;
+}
+
+.checkbox-label input:checked + .checkmark::after {
+  content: "✓";
+  color: white;
+  font-size: 12px;
+}
+
+.product-image {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.product-image img {
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.product-image img:hover {
+  transform: scale(1.05);
+}
+
+.product-info {
+  text-align: center;
+}
+
+.product-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  line-height: 1.4;
+}
+
+.product-category,
+.product-store {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.rating-stars {
+  display: flex;
+}
+
+.star {
+  color: #ffc107;
+  font-size: 1rem;
+}
+
+.star.empty {
+  color: #ddd;
+}
+
+.rating-value {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #007bff;
+  margin: 1rem 0;
+}
+
+.view-details-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.view-details-btn:hover {
+  background: #218838;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 3rem;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem;
+}
+
+.no-results-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.no-results h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.no-results p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.back-to-home {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.highlight {
+  background: #fff3cd;
+  padding: 0 2px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .search-results-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .results-meta {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+}
