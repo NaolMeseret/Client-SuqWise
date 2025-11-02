@@ -30,7 +30,7 @@ const ProductCard = ({ product }) => {
         <div className="price-AIBUTTON">
           <div className="product-price">${product.price}</div>
           <button
-            class="ai-button"
+            className="ai-button"
             onClick={(e) => {
               e.preventDefault()
               alert("🤖 SuqWise AI is analyzing your selected products...")
