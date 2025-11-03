@@ -11,7 +11,7 @@ import RegisterPage from "./pages/RegisterPage"
 import ProductDetailPage from "./components/product/ProductDetailPage"
 import "./styles/main.css"
 
-// import SearchResults from "./pages/SearchResults"
+import SearchResults from "./pages/SearchResults"
 
 // In your routes
 function App() {
