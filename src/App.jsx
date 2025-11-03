@@ -4,14 +4,14 @@ import Header from "./components/layout/Header"
 import Footer from "./components/layout/Footer"
 import Hero from "./components/layout/Hero"
 import HomePage from "./pages/HomePage"
-// import ProductsPage from "./pages/ProductsPage"
+import ProductsPage from "./pages/ProductsPage"
 import StoreDetailPage from "./pages/StoreDetailPage"
 import LoginPage from "./pages/LoginPage"
 import RegisterPage from "./pages/RegisterPage"
 import ProductDetailPage from "./components/product/ProductDetailPage"
 import "./styles/main.css"
 
-import SearchResults from "./pages/SearchResults"
+// import SearchResults from "./pages/SearchResults"
 
 // In your routes
 function App() {
